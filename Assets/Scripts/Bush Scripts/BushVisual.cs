@@ -4,16 +4,64 @@ using UnityEngine;
 
 public class BushVisual : MonoBehaviour
 {
-    public enum BushVariant {Green, Cyan, Yellow}
 
+    [SerializeField]
+    private Sprite[] bushSprites, fruitSprites, drySprites;
+
+    [SerializeField]
+    private SpriteRenderer[] fruitsRenderers;
+
+    public enum BushVariant {Green, Cyan, Yellow}
     private BushVariant bushVariant;
 
-    private void Start()
+    public float hideTimePerFruit = 0.2f;
+    private SpriteRenderer sr;
+
+    private void Awake()
     {
-        bushVariant = BushVariant.Green;
+        sr = GetComponent<SpriteRenderer>();
 
-        int bushVariantIndex = (int)BushVariant.Green;
+        bushVariant = (BushVariant)Random.Range(0, bushSprites.Length);
+        sr.sprite = bushSprites[(int)bushVariant];
 
+        if (Random.Range(0, 2) == 1)
+            sr.flipX = true;
+        for (int i = 0; i < fruitsRenderers.Length; i++)
+        {
+            fruitsRenderers[i].sprite = fruitSprites[(int)bushVariant];
+            fruitsRenderers[i].enabled = false;
+        }
+    }
+
+    public BushVariant GetBushVaraint()
+    {
+        return bushVariant;
+    }
+    public void SetToDry()
+    {
+        sr.sprite = drySprites[(int)bushVariant];
+
+    }
+    IEnumerator _HideFruits(float time, int index)
+    {
+        yield return new WaitForSeconds(time);
+        fruitsRenderers[index].enabled = false;
+    }
+
+    public void HideFruits()
+    {
+        float waitTimeForFruit = hideTimePerFruit;
+
+        for (int i = 0; i < fruitsRenderers.Length; i++)
+        {
+            StartCoroutine(_HideFruits(waitTimeForFruit, i));
+            waitTimeForFruit += hideTimePerFruit;
+        }
+    }
+    public void ShowFruits()
+    {
+        for (int i = 0; i < fruitsRenderers.Length; i++)
+            fruitsRenderers[i].enabled = true;
     }
 
 
