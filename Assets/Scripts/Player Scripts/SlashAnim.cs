@@ -45,7 +45,7 @@ public class SlashAnim : MonoBehaviour
     {
         if (collision.CompareTag("Wolf"))
         {
-            Debug.Log("Collied with wolf");
+            collision.GetComponent<WolfHealth>().TakeDamage(damage);
         }
     }
 

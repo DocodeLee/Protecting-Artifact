@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBackpack : MonoBehaviour
 {
     public int maxNumberOfFruitsToStore = 50;
     public int currentNumberOfStoredFruits;
+
+    [SerializeField]
+    private Text backpackInfoTxt;
+
+    private void Start()
+    {
+        SetBackpackInfoText(0);
+    }
 
     public void AddFruits(int amount)
     {
@@ -14,6 +23,8 @@ public class PlayerBackpack : MonoBehaviour
         if(currentNumberOfStoredFruits > maxNumberOfFruitsToStore)
             currentNumberOfStoredFruits = maxNumberOfFruitsToStore; // control volume
 
+        SetBackpackInfoText(currentNumberOfStoredFruits);
+
     }    
 
     public int TakeFruits()
@@ -21,7 +32,14 @@ public class PlayerBackpack : MonoBehaviour
         int takenFruits = currentNumberOfStoredFruits;
         currentNumberOfStoredFruits = 0;
 
+        SetBackpackInfoText(currentNumberOfStoredFruits);
+
         return takenFruits;
+    }
+
+    void SetBackpackInfoText(int amount)
+    {
+        backpackInfoTxt.text = "Backapck: " + amount + "/" + maxNumberOfFruitsToStore;
     }
 
 } // class

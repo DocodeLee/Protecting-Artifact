@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8430375624321772368}
   - component: {fileID: 5453323852735024152}
   - component: {fileID: 628697821119419102}
+  - component: {fileID: 7372539518836397486}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -150,7 +151,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 869537767
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3245a6694aa805e4dbe1d4f051f2880a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -211,6 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxNumberOfFruitsToStore: 50
   currentNumberOfStoredFruits: 0
+  backpackInfoTxt: {fileID: 0}
 --- !u!114 &5453323852735024152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,7 +236,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 72bcd54b5aa5d7f4191fd8ceea727c6f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -320,3 +322,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7372539518836397486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4900550316489836088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3405817960c5b71458c41dca357b5abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slashPrefab: {fileID: 5687384678221785351, guid: 498d778810dac60409304d9816f23e83, type: 3}
+  attackCoolDown: 0.3
