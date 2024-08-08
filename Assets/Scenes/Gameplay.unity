@@ -1980,7 +1980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1794079747}
-  timeToWin: 2
+  timeToWin: 300
 --- !u!4 &331917214
 Transform:
   m_ObjectHideFlags: 0
