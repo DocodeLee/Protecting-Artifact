@@ -37,7 +37,8 @@ public class TimeManager : MonoBehaviour
 
             Destroy(artifact);
 
-            // show win panel
+            // Show Win
+            GameOverUIController.instance.GameOver("You WIN!");
 
 
         }

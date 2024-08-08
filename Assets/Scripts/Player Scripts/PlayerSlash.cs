@@ -18,11 +18,14 @@ public class PlayerSlash : MonoBehaviour
 
     private Vector3 spawnPosition;
 
+    private GameObject artifact;
+
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         mainCamera = Camera.main;
 
+        artifact = GameObject.FindWithTag("Artifact");
 
     }
     private void Update()
@@ -30,13 +33,19 @@ public class PlayerSlash : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time > attackTimer)
         {
             Slash();
-            audioSource.Play();
+            
             attackTimer = Time.time + attackCoolDown;
         }
     }
 
     void Slash()
     {
+
+        if (!artifact)
+            return;
+
+        audioSource.Play();
+
         spawnPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         spawnPosition.z = 0f;
 
